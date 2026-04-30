@@ -79,11 +79,37 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) 
 {
+    if(tree->root == NULL) // si el arbol esta vacío.
+    {
+        tree->root = createTreeNode(key,value); // se crea nodo nuevo y se le asigna la raiz
+        tree->current = tree->root; // se deja current en la raiz
+    }
+
+    TreeNode* current = tree->root; // current para recorrer
+    TreeNode* parent = NULL; // para guardar el padre, necesario para conectar después.
+
+    while( current != NULL )
+        {
+            if(is_equal(tree,key,current->pair->key)) return; // si hay repetido no se inserta
+            parent = current;
+            if(tree->lower_than(key,current->pair->key)) // si llave buscada es menor al current
+            {
+                current = current->left; // current baja a la izquierda
+            }
+            else
+            {
+                current = current->right; // current baja a la derecha
+            }
+            TreeNode* Nodonew = createTreeNode(key,value); // 
+            Nodonew->parent = parent;
+
+            if(tree->lower_than(key,parent->pair->key)) parent->left = Nodonew;
+            else parent->right = Nodonew;
+            tree->current = Nodonew;
 
 
-
-
-
+            
+        }
     
 }
 
