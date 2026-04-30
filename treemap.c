@@ -58,7 +58,7 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
 
 Pair * searchTreeMap(TreeMap * tree, void* key) 
 {    
-    Treenode* current = tree->root;
+    TreeNode* current = tree->root;
     while(current != NULL)
         {
             if(is_equal(tree,key,current->pair->key))

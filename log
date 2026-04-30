@@ -55,3 +55,9 @@ treemap.c:70:35: error: request for member ‘right’ in something not a struct
    70 |             else current = current->right;
       |                                   ^~
 b071ed8
+Thu Apr 30 08:21:49 PM UTC 2026: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  11|6
+total_score: 15/60
+23ff1b6
