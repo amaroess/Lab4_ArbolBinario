@@ -100,6 +100,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             {
                 current = current->right; // current baja a la derecha
             }
+        }    
             TreeNode* Nodonew = createTreeNode(key,value); // 
             Nodonew->parent = parent;
 
@@ -109,7 +110,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 
 
             
-        }
+        
     
 }
 
