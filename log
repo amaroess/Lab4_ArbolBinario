@@ -97,3 +97,14 @@ Thu Apr 30 09:00:13 PM UTC 2026:
  tests:  15|4
 total_score: 25/60
 bef6942
+Thu Apr 30 10:15:14 PM UTC 2026: 
+ treemap.c | 30 ++++++++++++++++++++++--------
+ 1 file changed, 22 insertions(+), 8 deletions(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:148:15: error: variable ‘hijo’ set but not used [-Werror=unused-but-set-variable]
+  148 |     TreeNode* hijo;
+      |               ^~~~
+cc1: all warnings being treated as errors
+523230e

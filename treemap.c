@@ -57,7 +57,8 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
 // Si no se encuentra la clave retorna NULL. Recuerde hacer que el current apunte al nodo encontrado.
 
 Pair * searchTreeMap(TreeMap * tree, void* key) 
-{    
+{   
+    if(tree == NULL || tree->root == NULL) return NULL;
     TreeNode* current = tree->root;
     while(current != NULL)
         {
@@ -79,6 +80,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) 
 {
+    if(tree == NULL) return;
     if(tree->root == NULL) // si el arbol esta vacío.
     {
         tree->root = createTreeNode(key,value); // se crea nodo nuevo y se le asigna la raiz
@@ -115,11 +117,12 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 
 TreeNode * minimum(TreeNode * x)
 {
-    if(x->left == NULL) return x;
-    TreeNode * aux = x;
-    while(aux->left != NULL)
-        aux = aux->left;
-    return aux;
+    if(x == NULL) return NULL;
+    if(x->left == NULL) return x; // si x no tiene hijo izquierdo, se retorna.
+    TreeNode * aux = x; // nodo auxiliar para recorrer
+    while(aux->left != NULL) // mientras no se llegue al ultimo nodo a la izquierda
+        aux = aux->left; // se avanza a la izquierda
+    return aux; // se retorna ultimo nodo a la izquierda
 }
 
 // 5.- Implemente la función void removeNode(TreeMap * tree, TreeNode* node). 
@@ -132,9 +135,20 @@ TreeNode * minimum(TreeNode * x)
 
 void removeNode(TreeMap * tree, TreeNode* node) 
 {
-
-
-
+    if(tree == NULL || tree->root == NULL) return;
+    if(node->left != NULL  && node->right != NULL)
+    {
+        TreeNode* sucesor = node->left;
+        while(sucesor->right != NULL)
+            sucesor = sucesor->right;
+        node->pair->key = sucesor->pair->key;
+        node->pair->value = sucesor->pair->value;
+        node = sucesor;
+    }
+    TreeNode* hijo;
+    if(node->left != NULL)
+        hijo = node->left;
+    else hijo = node->right;
 
 
 
