@@ -101,17 +101,11 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                 current = current->right; // current baja a la derecha
             }
         }    
-            TreeNode* Nodonew = createTreeNode(key,value); // 
-            Nodonew->parent = parent;
-
-            if(tree->lower_than(key,parent->pair->key)) parent->left = Nodonew;
-            else parent->right = Nodonew;
-            tree->current = Nodonew;
-
-
-            
-        
-    
+            TreeNode* Nodonew = createTreeNode(key,value); // se crea nodo nuevo
+            Nodonew->parent = parent; // se conecta con el padre
+            if(tree->lower_than(key,parent->pair->key)) parent->left = Nodonew; // si es menor que el padre, se le asigna la izquierda
+            else parent->right = Nodonew; // en caso contrario se le asigna la derecha
+            tree->current = Nodonew; // se deja current en el nodo nuevo
 }
 
 // 4. Implemente la función TreeNode * minimum(TreeNode * x). 
