@@ -212,7 +212,7 @@ Pair * firstTreeMap(TreeMap * tree)
 Pair * nextTreeMap(TreeMap * tree) 
 {
     if(tree == NULL || tree->current == NULL) return NULL;
-    TreeNode *aux = tree->current->parent;
+    TreeNode *aux = tree->current;
     if(aux->right != NULL)
     {
         aux = aux->right;
@@ -228,7 +228,8 @@ Pair * nextTreeMap(TreeMap * tree)
                 auxllave = (int*) aux->pair->key;
             }
     }
-    printf("%d\n", (int)aux->pair->key);
+    lla
+    printf("%d\n", (int*)aux->pair->key);
     tree->current = aux;
     return aux->pair;
 }
