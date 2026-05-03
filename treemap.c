@@ -228,7 +228,7 @@ Pair * nextTreeMap(TreeMap * tree)
                 auxllave = (int*) aux->pair->key;
             }
     }
-    printf("%d\n", (int*)aux->pair->key));
+    printf("%d\n", (int*)aux->pair->key);
     tree->current = aux;
     return aux->pair;
 }
