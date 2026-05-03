@@ -211,24 +211,26 @@ Pair * firstTreeMap(TreeMap * tree)
 
 Pair * nextTreeMap(TreeMap * tree) 
 {
-    if(tree == NULL || tree->current == NULL) return NULL;
-    TreeNode *node = tree->current;
+    if(tree == NULL || tree->current == NULL) return NULL; 
+    TreeNode *aux = tree->current; // aux para recorer
     // si tiene subárbol derecho
-    if(node->right != NULL) {
-        node = node->right;
-        while(node->left != NULL)
-            node = node->left;
-        tree->current = node;
-        return node->pair;
+    if(aux->right != NULL) 
+    {
+        aux = aux->right; // nos movemos subarbol derecho
+        while(aux->left != NULL) aux = aux->left; // se busca el minimo del subarbol
+        tree->current = aux; // se actualiza current
+        return aux->pair; // se retonrna
     }
-    TreeNode *parent = node->parent;
-    while(parent != NULL && node == parent->right) {
-        node = parent;
-        parent = parent->parent;
+    // si no tiene subarbol der
+    TreeNode *parent = aux->parent; // parent para recorrer
+    while(parent != NULL && aux == parent->right) // mientras haya padre y aux se su subarbol derecho
+        {
+        aux = parent; // se sube aux al parent
+        parent = parent->parent; // parent se sube a su parent
     }
-    tree->current = parent;
-    if(parent == NULL) return NULL;
-    return parent->pair;
+    tree->current = parent; // se actualiza current
+    if(parent == NULL) return NULL; // si parent es null
+    return parent->pair; // se retorna par
 }
 
 // 7. La función Pair* upperBound(TreeMap* tree, void* key) retorna el Pair con clave igual a key. 
@@ -238,10 +240,30 @@ Pair * nextTreeMap(TreeMap * tree)
 
 Pair * upperBound(TreeMap * tree, void* key) 
 {    
+    if (tree == NULL || tree->root == NULL) return NULL;
+    TreeNode* current = tree->root;  // para recorrer raiz
+    TreeNode* aux = NULL; // aux guarda el mejor candidato encontrado
+    int* buscado = (int*) key; // se convierte llave a int para comparaciones posteriores
+    while (current != NULL) 
+    {
+        int* keyx = (int*) current->pair->key; // keyx es la llave de el current convertida a int para comparar
+        if (*keyx == *buscado) // se compara con el buscado (si son iguales = mejor caso)
+        {
+            return current->pair; // se retorna par
+        }
+        else if (*keyx > *buscado) // si llave es mayor al buscado nos movemos izq
+        {    
+            aux = current; // posible candidato
+            current = current->left; // nos movemos a la izq
+        }
+        else // si llave es menor nos movemos der
+        {
+            current = current->right; // nos movemos a la derecha
+        }
+    }
 
-
-    
-    return NULL;
+    if (aux == NULL) return NULL; 
+    return aux->pair;
 }
 
 
