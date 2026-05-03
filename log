@@ -282,3 +282,17 @@ Sun May  3 04:23:54 PM UTC 2026:
  tests:  20|2
 total_score: 40/60
 55f9d21
+Sun May  3 04:32:04 PM UTC 2026: 
+ treemap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:218:5: error: this ‘while’ clause does not guard... [-Werror=misleading-indentation]
+  218 |     while(aux != NULL && *auxllave < *llave)
+      |     ^~~~~
+treemap.c:220:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+  220 |         auxllave = (int*) aux->pair->key;
+      |         ^~~~~~~~
+cc1: all warnings being treated as errors
+b1ba6e3
