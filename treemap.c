@@ -262,8 +262,8 @@ Pair * upperBound(TreeMap * tree, void* key)
         }
     }
 
-    if (aux == NULL) return NULL; // si no se encuentra candidato, se retorna NULL
-    return aux->pair; // se retorna el mejor candidato
+    if (ub_node == NULL) return NULL; // si no se encuentra candidato, se retorna NULL
+    return ub_node->pair; // se retorna el mejor candidato
 }
 
 
