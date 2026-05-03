@@ -262,3 +262,17 @@ treemap.c:217:47: error: comparison between pointer and integer [-Werror]
       |                                               ^
 cc1: all warnings being treated as errors
 fcfa3e4
+Sun May  3 04:22:07 PM UTC 2026: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:217:26: error: expected expression before ‘int’
+  217 |     while(aux != NULL && int*(aux->pair->key) < *(llave))
+      |                          ^~~
+treemap.c:215:10: error: unused variable ‘llave’ [-Werror=unused-variable]
+  215 |     int* llave = (int*) tree->current->pair->key;
+      |          ^~~~~
+cc1: all warnings being treated as errors
+6e56a1c
