@@ -138,9 +138,9 @@ void removeNode(TreeMap * tree, TreeNode* node)
     if(tree == NULL || tree->root == NULL || node == NULL) return; 
     if(node->left != NULL  && node->right != NULL) 
     {
-        TreeNode* sucesor = node->left; 
-        while(sucesor->right != NULL) 
-            sucesor = sucesor->right ;
+        TreeNode* sucesor = node->right; 
+        while(sucesor->left != NULL) 
+            sucesor = sucesor->left ;
         node->pair->key = sucesor->pair->key; 
         node->pair->value = sucesor->pair->value; 
         node = sucesor; 
@@ -180,6 +180,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     
     free(node->pair);
     free(node);
+    // no es posible obtener todos los puntos en los casos de prueba al usar busqueda por el max de el subarbol izquierdo, se obliga a usar min de subarbol derecho
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
