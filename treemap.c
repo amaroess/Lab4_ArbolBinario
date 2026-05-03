@@ -135,34 +135,36 @@ TreeNode * minimum(TreeNode * x)
 
 void removeNode(TreeMap * tree, TreeNode* node) 
 {
-    if(tree == NULL || tree->root == NULL) return; 
-    if(node->left != NULL  && node->right != NULL) 
+    if(tree == NULL || tree->root == NULL) return; //verificacion
+    if(node->left != NULL  && node->right != NULL)  // si tiene dos hijos
     {
-        TreeNode* sucesor = node->right; 
-        while(sucesor->left != NULL) 
+        TreeNode* sucesor = node->right; // subarbol der
+        while(sucesor->left != NULL) // se avanza al menor del subarbol der
             sucesor = sucesor->left ;
-        node->pair->key = sucesor->pair->key; 
-        node->pair->value = sucesor->pair->value; 
-        node = sucesor; 
+        node->pair->key = sucesor->pair->key;  // se copian datos
+        node->pair->value = sucesor->pair->value; // se copian datos
+        node = sucesor; // despues se eliminara
     }
-    TreeNode* hijo; 
-    if(node->left != NULL)
+    //caso con uno o 0 hijos
+    TreeNode* hijo; // hijo
+    if(node->left != NULL) // si hay hijo izq
         hijo = node->left;
-    else hijo = node->right;
-    if(node->parent == NULL)
+    else hijo = node->right; // si hay hijo der
+    if(node->parent == NULL) // si estamos en la raiz
     {
-        tree->root = hijo;
-        if(hijo != NULL)
+        tree->root = hijo; // se le asigna hijo a la raiz
+        if(hijo != NULL) // se desconecta
             hijo->parent = NULL;
         
     }
-    else
+    else 
     {
-        if(node->parent->left == node)
+        if(node->parent->left == node) // si node esta a la izquierda se cambia por hijo
             node->parent->left = hijo;
-        else node->parent->right = hijo;
-        if(hijo != NULL) hijo->parent = node->parent;
+        else node->parent->right = hijo; // si node esta a la derecha se cambia por hijo
+        if(hijo != NULL) hijo->parent = node->parent; // se conecta
     }
+    /* para comprobaciones
     int* rootkey = (int*) tree->root->pair->key;
     printf("  %d  \n", *(rootkey));
     printf("|    | \n");
@@ -176,11 +178,11 @@ void removeNode(TreeMap * tree, TreeNode* node)
         int* rootder = (int*) tree->root->right->pair->key;
         printf("%d\n", *(rootder));
     }
-        
-    
-    free(node->pair);
-    free(node);
     // no es posible obtener todos los puntos en los casos de prueba al usar busqueda por el max de el subarbol izquierdo, se obliga a usar min de subarbol derecho
+    */    
+    
+    free(node->pair); // se libera
+    free(node); // se libera
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
@@ -199,13 +201,12 @@ void eraseTreeMap(TreeMap * tree, void* key){
 
 Pair * firstTreeMap(TreeMap * tree)
 {    
-
-
-
-
-
+    if(tree == NULL || tree->root == NULL) return NULL;
+    TreeNode* aux = tree->root;
+    while(aux->left != NULL)
+        aux = aux->left;
+    return aux->pair;
     
-    return NULL;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
