@@ -144,3 +144,14 @@ Sun May  3 03:06:38 PM UTC 2026:
  tests:  17|4
 total_score: 31/60
 5fa5c32
+Sun May  3 03:12:21 PM UTC 2026: 
+ treemap.c | 2 ++
+ 1 file changed, 2 insertions(+)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:166:39: error: ‘TreeNode’ has no member named ‘Pair’; did you mean ‘pair’?
+  166 |     int* rootkey = (int*) tree->root->Pair->key;
+      |                                       ^~~~
+      |                                       pair
+bb2a752

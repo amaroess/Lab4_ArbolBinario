@@ -163,6 +163,8 @@ void removeNode(TreeMap * tree, TreeNode* node)
         else node->parent->right = hijo;
         if(hijo != NULL) hijo->parent = node->parent;
     }
+    int* rootkey = (int*) tree->root->Pair->key;
+    printf("%d", *(rootkey));
     free(node->pair);
     free(node);
 }
