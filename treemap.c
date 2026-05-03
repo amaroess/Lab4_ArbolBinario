@@ -173,7 +173,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     }   
     if(tree->root->left != NULL) 
     {
-        int* rootder = (int*) tree->root->der->pair->key;
+        int* rootder = (int*) tree->root->right->pair->key;
         printf("%d\n", *(rootder));
     }
         
