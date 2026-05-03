@@ -181,8 +181,8 @@ void removeNode(TreeMap * tree, TreeNode* node)
     // no es posible obtener todos los puntos en los casos de prueba al usar busqueda por el max de el subarbol izquierdo, se obliga a usar min de subarbol     derecho
     */    
     
-    free(node->pair); // se libera
-    free(node); // se libera
+    free(node->pair); // se libera momeria del Pair
+    free(node); // se libera memoria del TreeNode
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
