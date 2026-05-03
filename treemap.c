@@ -212,7 +212,7 @@ Pair * firstTreeMap(TreeMap * tree)
 Pair * nextTreeMap(TreeMap * tree) 
 {
     if(tree == NULL || tree->current == NULL) return NULL;
-    int llave = (int*) tree->current->pair->key;
+    int* llave = (int*) tree->current->pair->key;
     TreeNode *aux = tree->current->parent;
     while(aux != NULL && aux->pair->key < llave)
         aux = aux->parent;
