@@ -214,7 +214,7 @@ Pair * nextTreeMap(TreeMap * tree)
     if(tree == NULL || tree->current == NULL) return NULL;
     int* llave = (int*) tree->current->pair->key;
     TreeNode *aux = tree->current->parent;
-    while(aux != NULL && aux->pair->key < llave)
+    while(aux != NULL && (int*)aux->pair->key < *llave)
         aux = aux->parent;
     tree->current = aux;
     return aux->pair;
