@@ -213,12 +213,12 @@ Pair * nextTreeMap(TreeMap * tree)
 {
     if(tree == NULL || tree->current == NULL) return NULL;
     TreeNode *aux = tree->current;
-    if(aux->right != NULL)
+    if(aux->right != NULL && aux->parent == NULL)
     {
         aux = aux->right;
         while(aux->left != NULL) aux = aux->left;
     }
-    else
+    else if(aux->parent != NULL)
     {
         int* llave = (int*) tree->current->pair->key;
         int* auxllave = (int*) aux->pair->key;
