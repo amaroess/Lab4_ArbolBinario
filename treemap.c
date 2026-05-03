@@ -213,7 +213,7 @@ Pair * nextTreeMap(TreeMap * tree)
 {
     if(tree == NULL || tree->current == NULL) return NULL;
     TreeNode *aux = tree->current;
-    if(aux->right != NULL && aux->parent == NULL)
+    if(aux->right != NULL && aux->parent != NULL)
     {
         aux = aux->right;
         while(aux->left != NULL) aux = aux->left;
