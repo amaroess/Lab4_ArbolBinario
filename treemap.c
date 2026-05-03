@@ -140,7 +140,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     {
         TreeNode* sucesor = node->left; 
         while(sucesor->right != NULL) 
-            sucesor = sucesor->right 
+            sucesor = sucesor->right ;
         node->pair->key = sucesor->pair->key; 
         node->pair->value = sucesor->pair->value; 
         node = sucesor; 
