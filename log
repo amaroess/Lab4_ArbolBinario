@@ -412,3 +412,21 @@ Sun May  3 05:47:14 PM UTC 2026:
  tests:  29|0
 total_score: 60/60
 6a26a97
+Sun May  3 06:00:04 PM UTC 2026: 
+ treemap.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘upperBound’:
+treemap.c:265:9: error: ‘aux’ undeclared (first use in this function)
+  265 |     if (aux == NULL) return NULL; // si no se encuentra candidato, se retorna NULL
+      |         ^~~
+treemap.c:265:9: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:245:15: error: variable ‘ub_node’ set but not used [-Werror=unused-but-set-variable]
+  245 |     TreeNode* ub_node = NULL; // ub_node guarda el mejor candidato encontrado, como se pide.
+      |               ^~~~~~~
+treemap.c:267:1: error: control reaches end of non-void function [-Werror=return-type]
+  267 | }
+      | ^
+cc1: all warnings being treated as errors
+db419ab

@@ -44,12 +44,12 @@ TreeNode * createTreeNode(void* key, void * value) {
     
 TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) 
 {
-    TreeMap* map = (TreeMap*) malloc(sizeof(TreeMap));
+    TreeMap* map = (TreeMap*) malloc(sizeof(TreeMap)); // se reserva memoria y se inicializan elementos.
     if(map == NULL) return NULL;
     map->root = NULL;
     map->current = NULL;
     map->lower_than = lower_than;
-    return map;
+    return map; // se retorna
 }
 
 // 2. Implemente la función Pair* searchTreeMap(TreeMap* tree, void* key), 
@@ -59,18 +59,18 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
 Pair * searchTreeMap(TreeMap * tree, void* key) 
 {   
     if(tree == NULL || tree->root == NULL) return NULL;
-    TreeNode* current = tree->root;
-    while(current != NULL)
+    TreeNode* current = tree->root; // se parte de la raiz
+    while(current != NULL) // mientras current no sea null
         {
-            if(is_equal(tree,key,current->pair->key))
+            if(is_equal(tree,key,current->pair->key)) // si llave es igual a la buscada, se me olvido usar is_equal en funciones del final
             {
-                tree->current = current;
-                return current->pair;
+                tree->current = current; // se actualiza current
+                return current->pair; // se retorna para buscado
             }
-            if(tree->lower_than(key,current->pair->key)) current = current->left;
-            else current = current->right;
+            if(tree->lower_than(key,current->pair->key)) current = current->left; // si es menor nos movemos a la izquierda.
+            else current = current->right; // si es mayor nos movemos a la derecha.
         }
-    return NULL;
+    return NULL; // si no se encuentra se retorna null.
 }
 
 // 3. Implemente la función void insertTreeMap(TreeMap * tree, void* key, void * value). 
@@ -178,7 +178,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
         int* rootder = (int*) tree->root->right->pair->key;
         printf("%d\n", *(rootder));
     }
-    // no es posible obtener todos los puntos en los casos de prueba al usar busqueda por el max de el subarbol izquierdo, se obliga a usar min de subarbol derecho
+    // no es posible obtener todos los puntos en los casos de prueba al usar busqueda por el max de el subarbol izquierdo, se obliga a usar min de subarbol     derecho
     */    
     
     free(node->pair); // se libera
@@ -242,7 +242,7 @@ Pair * upperBound(TreeMap * tree, void* key)
 {    
     if (tree == NULL || tree->root == NULL) return NULL;
     TreeNode* current = tree->root;  // para recorrer raiz
-    TreeNode* aux = NULL; // aux guarda el mejor candidato encontrado
+    TreeNode* ub_node = NULL; // ub_node guarda el mejor candidato encontrado, como se pide.
     int* buscado = (int*) key; // se convierte llave a int para comparaciones posteriores
     while (current != NULL) 
     {
@@ -253,7 +253,7 @@ Pair * upperBound(TreeMap * tree, void* key)
         }
         else if (*keyx > *buscado) // si llave es mayor al buscado nos movemos izq
         {    
-            aux = current; // posible candidato
+            ub_node = current; // posible candidato
             current = current->left; // nos movemos a la izq
         }
         else // si llave es menor nos movemos der
@@ -262,8 +262,8 @@ Pair * upperBound(TreeMap * tree, void* key)
         }
     }
 
-    if (aux == NULL) return NULL; 
-    return aux->pair;
+    if (aux == NULL) return NULL; // si no se encuentra candidato, se retorna NULL
+    return aux->pair; // se retorna el mejor candidato
 }
 
 
